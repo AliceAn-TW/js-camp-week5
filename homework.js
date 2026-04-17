@@ -227,9 +227,11 @@ function addToCart(carts, product, quantity) {
   // 請實作此函式
   const hasProduct = isProductInCart(carts, product.id);
   if (hasProduct) {
-    carts.map((item) => {
+    return carts.map((item) => {
       if (item.product.id === product.id) {
         return { ...item, quantity: item.quantity + quantity };
+      } else {
+        return item; // 不符合的商品，原樣回傳
       }
     });
   } else {
